@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Katelyn Lyu — Product Manager focusing on World Model, Robotics, Deep Learning, and BCI.">
+<title>🦄 Katelyn Lyu</title>
+<style>
+  :root {
+    --bg: #e8f4fd; --card: #ffffff; --text: #1a3a5c; --text2: #4a7a9f; --muted: #6a9ac0;
+    --link: #2a6a9f; --link-hover: #1565c0; --border-dashed: #90caf9;
+    --pink: #ff6b6b; --yellow: #feca57; --blue: #48dbfb; --purple: #ff9ff3; --green: #2ecc71;
+    --max-w: 820px; --radius: 20px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Comic Sans MS', 'Chalkboard SE', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height:1.7; padding:40px 20px; max-width:var(--max-w); margin:0 auto; }
+  a { color:var(--link); text-decoration:none; transition:color .2s; }
+  a:hover { color:var(--link-hover); }
+
+  /* DASHED HEADER */
+  .header {
+    display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start;
+    padding:24px; background:linear-gradient(135deg, #dceefb, #fce4ec);
+    border: 3px dashed var(--border-dashed); border-radius: var(--radius);
+    box-shadow: 4px 4px 0 #a8d4f0; margin-bottom:24px;
+  }
+  .avatar {
+    width:100px; height:100px; border-radius:50%; object-fit:cover;
+    border: 3px dashed var(--pink); box-shadow: 3px 3px 0 #ffb3b3; flex-shrink:0;
+  }
+  .info h1 { font-size:26px; font-weight:700; letter-spacing:-.5px; }
+  .info .role { font-size:14px; color:var(--text2); margin-top:2px; font-weight:600; }
+  .info .bio { font-size:13px; margin-top:8px; line-height:1.8; }
+  .links { margin-top:10px; display:flex; flex-wrap:wrap; gap:10px; font-size:12px; }
+  .links a {
+    display:inline-flex; align-items:center; gap:4px;
+    padding:5px 14px; background:var(--card); border:2px dashed var(--border-dashed);
+    border-radius:14px; font-weight:600; box-shadow: 2px 2px 0 #b8d8ef;
+    transition: all .2s;
+  }
+  .links a:hover { 
+    border-color: var(--link-hover); border-style: solid; 
+    box-shadow: 3px 3px 0 var(--link-hover); transform: translate(-1px,-1px); 
+    text-decoration: none;
+  }
+
+  @media (max-width:600px) { .header { flex-direction:column; align-items:center; text-align:center; } }
+
+  /* SECTIONS */
+  .section { margin:28px 0; }
+  .section h2 {
+    font-size:17px; font-weight:700; padding:10px 18px;
+    background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    background-size: 200% 200%; animation: rainbow 4s ease infinite;
+    color: #1a1025; border-radius: var(--radius); display:inline-block;
+    box-shadow: 3px 3px 0 #90caf9; margin-bottom:16px;
+  }
+  @keyframes rainbow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+  /* TAGS */
+  .tags { display:flex; flex-wrap:wrap; gap:8px; }
+  .tags span { 
+    font-size:12px; padding:6px 16px; border-radius:20px; font-weight:700;
+    border: 2.5px dashed var(--border-dashed); box-shadow: 2px 2px 0 #b8d8ef;
+    background: var(--card); color: var(--link);
+  }
+
+  /* NEWS */
+  .news-item { 
+    display:flex; gap:10px; font-size:13px; margin-bottom:6px;
+    padding:8px 14px; background:var(--card); border: 2.5px dashed #b8d8ef;
+    border-radius:14px; box-shadow: 2px 2px 0 #e0ecf8;
+  }
+  .news-item .date { color:var(--pink); font-weight:700; white-space:nowrap; min-width:80px; }
+
+  /* PROJECT CARDS */
+  .project {
+    background:var(--card); border: 3px dashed var(--border-dashed);
+    border-radius: var(--radius); padding:18px; margin-bottom:14px;
+    box-shadow: 3px 3px 0 #a8d4f0; transition: all .2s;
+  }
+  .project:hover { 
+    border-color: var(--link-hover); border-style: solid;
+    box-shadow: 5px 5px 0 var(--link-hover); transform: translate(-2px,-2px);
+  }
+  .project-title { font-size:15px; font-weight:700; margin-bottom:6px; }
+  .project-desc { font-size:13px; color:var(--text2); margin-bottom:8px; line-height:1.7; }
+  .project-meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .project-meta .tag { 
+    font-size:11px; padding:3px 10px; border-radius:12px; font-weight:700;
+    background: linear-gradient(135deg, #e8f4fd, #fce4ec); 
+    color: var(--text2); border: 2px dashed #c0d8ec;
+  }
+  .project-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; font-size:12px; }
+  .project-links a { 
+    font-weight:700; padding:4px 12px; border-radius:12px;
+    background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    background-size: 200% 200%; animation: rainbow 4s ease infinite;
+    color: #1a1025; border: none; box-shadow: 2px 2px 0 #c0d8ec;
+    transition: all .2s;
+  }
+  .project-links a:hover { box-shadow: 3px 3px 0 #a8d4f0; transform: translate(-1px,-1px); text-decoration:none; }
+
+  /* RAINBOW ACCENTS */
+  .rainbow-divider { 
+    height:3px; border:none; border-radius:3px; margin:24px 0;
+    background: linear-gradient(90deg, var(--pink), var(--yellow), var(--green), var(--blue), var(--purple));
+  }
+
+  .footer { 
+    margin-top:36px; padding:16px; text-align:center; 
+    font-size:13px; font-weight:700; color:var(--muted);
+    border-top: 3px dashed var(--border-dashed);
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <img class="avatar" src="assets/avatar.jpg" alt="Katelyn Lyu">
+  <div class="info">
+    <h1>🦄 Katelyn Lyu</h1>
+    <div class="role">Product Manager @ BlueBird · AI / Robotics / DL / BCI</div>
+    <div class="bio">
+      Product Manager at <strong>BlueBird</strong>, focused on translating cutting-edge AI research into real-world products.
+      I bridge research and product — defining roadmaps, managing cross-functional teams, and shipping products that matter.
+      <br><br>
+      📧 <a href="mailto:katelynlyu@163.com">katelynlyu@163.com</a> &nbsp;·&nbsp;
+      📍 China (Asia/Shanghai)
+    </div>
+    <div class="links">
+      <a href="https://github.com/KatelynLyu">💻 GitHub</a>
+      <a href="mailto:katelynlyu@163.com">📧 Email</a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <h2>🔬 Focus Areas</h2>
+  <div class="tags">
+    <span>🌍 World Model</span><span>🤖 Robotics</span><span>🧠 Deep Learning</span><span>⚡ Brain-Computer Interface</span>
+    <span>🎯 Embodied AI</span><span>📊 Data Infrastructure</span><span>🚀 Product Strategy</span>
+  </div>
+</section>
+
+<div class="rainbow-divider"></div>
+
+<section class="section">
+  <h2>📰 Recent Updates</h2>
+  <div class="news-item"><span class="date">Jul 2026</span><span>Launched <strong>Situated Memory</strong> — domain-based memory architecture for personal AI agents. Paper draft in progress.</span></div>
+  <div class="news-item"><span class="date">Jun 2026</span><span>Built <strong>Money Tracker</strong> — SQLite-powered talent &amp; team tracking dashboard for embodied AI recruitment.</span></div>
+  <div class="news-item"><span class="date">May 2026</span><span>Designed <strong>Tech Radar</strong> — automated market signal scanner for startup funding &amp; talent discovery.</span></div>
+  <div class="news-item"><span class="date">2025–2026</span><span>Developed AI-powered <strong>recruitment intelligence tools</strong>: smart notebook, company profiling, CRM automation.</span></div>
+</section>
+
+<div class="rainbow-divider"></div>
+
+<section class="section">
+  <h2>🚀 Projects</h2>
+
+  <div class="project">
+    <div class="project-title">🎓 Psychosocial Counseling Project @ Tsinghua</div>
+    <div class="project-desc">
+      Admitted as a member of Tsinghua University's Psychosocial Counseling Project (2023).
+      Provided community psychological counseling, completing 20+ hours of volunteer work.
+      Explored how social conventions shape human interactions across diverse populations.
+    </div>
+    <div class="project-meta"><span class="tag">Psychology</span><span class="tag">Community Service</span><span class="tag">Tsinghua</span></div>
+    <div class="project-links"><a href="https://github.com/KatelynLyu/My-Psychosocial-Counseling-project-in-Tsinghua">💻 GitHub</a></div>
+  </div>
+
+  <div class="project">
+    <div class="project-title">🧠 Situated Memory — Domain-Based Agent Memory Architecture</div>
+    <div class="project-desc">
+      Novel organizing principle for personal AI agent memory: life domains instead of cognitive mechanisms.
+      77% context reduction in work sessions. Position paper targeting CHI / CSCW.
+    </div>
+    <div class="project-meta"><span class="tag">Agent Memory</span><span class="tag">HCI</span><span class="tag">Personal AI</span></div>
+    <div class="project-links"><a href="#">📄 Paper (arXiv, in prep)</a></div>
+  </div>
+
+  <div class="project">
+    <div class="project-title">📊 Money Tracker — Embodied AI Talent Intelligence</div>
+    <div class="project-desc">
+      Full-stack dashboard (Python + SQLite + vanilla JS) for tracking benchmark teams, world model groups, and professor labs.
+      Collapsible domain tags, layered card views, search-to-expand navigation.
+    </div>
+    <div class="project-meta"><span class="tag">Dashboard</span><span class="tag">Talent Intelligence</span><span class="tag">SQLite</span></div>
+    <div class="project-links"><a href="http://localhost:5432">Local</a></div>
+  </div>
+
+  <div class="project">
+    <div class="project-title">🛰️ Tech Radar — Market Signal Scanner</div>
+    <div class="project-desc">
+      Automated pipeline monitoring startup funding, paper publications, and talent movements in embodied AI.
+      Integrates with Feishu Bitable for collaborative signal processing.
+    </div>
+    <div class="project-meta"><span class="tag">Market Intelligence</span><span class="tag">Automation</span><span class="tag">Feishu</span></div>
+    <div class="project-links"><a href="http://localhost:5433">Local</a></div>
+  </div>
+
+  <div class="project">
+    <div class="project-title">📝 Smart Notebook — CRM &amp; Knowledge Base</div>
+    <div class="project-desc">
+      Local-first knowledge management for candidate profiles, company deep-dives, and structured interview notes.
+      Direct JSON manipulation for data integrity, bypassing the Electron GUI when needed.
+    </div>
+    <div class="project-meta"><span class="tag">CRM</span><span class="tag">Knowledge Management</span><span class="tag">Electron</span></div>
+  </div>
+
+</section>
+
+<section class="section">
+  <h2>📬 Inbox</h2>
+  <div style="background:var(--card); border: 3px dashed var(--border-dashed); border-radius:var(--radius); padding:18px; box-shadow: 3px 3px 0 #a8d4f0;">
+    <form id="inboxForm" style="display:flex; flex-direction:column; gap:12px;">
+      <input type="text" id="inboxName" placeholder="Your name" required style="padding:10px 14px; background:var(--card); border:2.5px dashed var(--border-dashed); border-radius:14px; font-size:13px; font-family:inherit; outline:none; color:var(--text);">
+      <input type="email" id="inboxEmail" placeholder="Your email" required style="padding:10px 14px; background:var(--card); border:2.5px dashed var(--border-dashed); border-radius:14px; font-size:13px; font-family:inherit; outline:none; color:var(--text);">
+      <textarea id="inboxMsg" rows="4" placeholder="Your message..." required style="padding:10px 14px; background:var(--card); border:2.5px dashed var(--border-dashed); border-radius:14px; font-size:13px; font-family:inherit; outline:none; color:var(--text); resize:vertical;"></textarea>
+      <button type="submit" style="padding:12px; border:none; border-radius:16px; font-size:14px; font-weight:700; font-family:inherit; cursor:pointer;
+        background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3); background-size:200% 200%;
+        animation: rainbow 4s ease infinite; color:#1a1025; box-shadow: 3px 3px 0 #a8d4f0;
+        transition: all .2s;
+      " onmouseover="this.style.boxShadow='5px 5px 0 #a8d4f0';this.style.transform='translate(-2px,-2px)'" onmouseout="this.style.boxShadow='3px 3px 0 #a8d4f0';this.style.transform='none'">
+        ✉️ Send to katelynlyu@163.com
+      </button>
+    </form>
+    <p id="inboxConfirm" style="display:none; margin-top:10px; font-size:13px; font-weight:700; color:var(--green); text-align:center;">
+      ✅ Message ready! Opening your email client...
+    </p>
+  </div>
+</section>
+
+<script>
+  document.getElementById('inboxForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = encodeURIComponent(document.getElementById('inboxName').value);
+    var email = encodeURIComponent(document.getElementById('inboxEmail').value);
+    var msg = encodeURIComponent(document.getElementById('inboxMsg').value);
+    var body = 'From: ' + name + '\\nEmail: ' + email + '\\n\\n' + msg;
+    var mailto = 'mailto:katelynlyu@163.com?subject=' + encodeURIComponent('Message from ' + name + ' via KatelynLyu.com') + '&body=' + body;
+    document.getElementById('inboxConfirm').style.display = 'block';
+    window.location.href = mailto;
+  });
+</script>
+
+<footer class="footer">© 2026 Katelyn Lyu</footer>
+
+</body>
+</html>
