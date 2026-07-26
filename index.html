@@ -60,6 +60,147 @@
 
   .bio { position:relative; overflow:hidden; }
 
+/* --- Rubber Ducky Easter Egg --- */
+.hero-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.rubber-ducky {
+  position: absolute;
+  width: 175px;
+  height: 175px;
+  top: 40%;
+  left: -200px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 100;
+  filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.3)) saturate(1.8) brightness(1.1);
+  background: transparent;
+  --progress-bar-color: transparent;
+  --poster-color: transparent;
+}
+
+/* Animation classes */
+.rubber-ducky.anim-sweep    { animation: duckSweep 2s ease-in-out forwards; }
+.rubber-ducky.anim-explode  { animation: duckExplode 2s ease-in-out forwards; }
+.rubber-ducky.anim-bounce   { animation: duckDrop 2.5s cubic-bezier(.22,.68,.31,1) forwards; }
+.rubber-ducky.anim-spinout  { animation: duckSpinOut 2.2s ease-in forwards; }
+.rubber-ducky.anim-inflate  { animation: duckInflate 2.2s ease-in-out forwards; }
+.rubber-ducky.anim-zoomby   { animation: duckZoomBy 0.8s linear forwards; }
+.rubber-ducky.anim-melt     { animation: duckMelt 2.5s ease-in-out forwards; }
+.rubber-ducky.anim-enter    { animation: duckEnterShake 1.2s ease-out forwards; }
+
+/* Sweep — classic fly-across */
+@keyframes duckSweep {
+  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
+  15%  { opacity:1; transform:translateY(-50%) scale(1); }
+  45%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.1); }
+  55%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.1); }
+  100% { left:115%; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
+}
+
+/* Explode — fly in, swell, blow up in a fireball */
+@keyframes duckExplode {
+  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
+  30%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1); }
+  50%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.3);
+         filter:drop-shadow(0 0 20px rgba(255,150,0,.6)) saturate(2) brightness(1.4); }
+  75%  { left:40%; top:40%; opacity:.7; transform:translateY(-50%) scale(3.5) rotate(20deg);
+         filter:drop-shadow(0 0 50px rgba(255,80,0,.8)) saturate(2.5) brightness(2); }
+  100% { left:40%; top:40%; opacity:0; transform:translateY(-50%) scale(7) rotate(45deg);
+         filter:drop-shadow(0 0 80px rgba(255,30,0,.4)) brightness(3) blur(15px); }
+}
+
+/* Drop — fall from above, squash-bounce, tumble away */
+@keyframes duckDrop {
+  0%   { left:40%; top:-200px; opacity:0; transform:translate(-50%,0) scale(.8); }
+  8%   { opacity:1; }
+  35%  { top:40%; transform:translate(-50%,0) scale(1.15,.85); }
+  45%  { top:22%; transform:translate(-50%,0) scale(.9,1.1); }
+  58%  { top:40%; transform:translate(-50%,0) scale(1.08,.92); }
+  66%  { top:30%; transform:translate(-50%,0) scale(.95,1.05); }
+  76%  { top:40%; transform:translate(-50%,0) scale(1); }
+  88%  { top:40%; opacity:1; transform:translate(-50%,0) scale(1); }
+  100% { top:120%; opacity:0; transform:translate(-50%,0) scale(.4) rotate(200deg); }
+}
+
+/* Spin-out — spirals in, then flings wildly off-screen */
+@keyframes duckSpinOut {
+  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7) rotate(0); }
+  25%  { left:35%; top:40%; opacity:1; transform:translateY(-50%) scale(1) rotate(360deg); }
+  45%  { left:40%; top:38%; opacity:1; transform:translateY(-50%) scale(1.1) rotate(720deg); }
+  100% { left:110%; top:-30%; opacity:0; transform:translateY(-50%) scale(.2) rotate(2880deg); }
+}
+
+/* Inflate-pop — swells bigger and bigger, then *POP* vanishes */
+@keyframes duckInflate {
+  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
+  25%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1); }
+  50%  { transform:translateY(-50%) scale(1.5); }
+  70%  { transform:translateY(-50%) scale(2.2);
+         filter:drop-shadow(4px 6px 20px rgba(0,0,0,.4)) saturate(2) brightness(1.4); }
+  84%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(3);
+         filter:drop-shadow(4px 6px 30px rgba(0,0,0,.5)) saturate(2.2) brightness(1.6); }
+  85%  { opacity:0; transform:translateY(-50%) scale(.01); }
+  100% { left:40%; top:40%; opacity:0; transform:translateY(-50%) scale(0); }
+}
+
+/* Zoom-by — blistering speed fly-through, motion-blurred */
+@keyframes duckZoomBy {
+  0%   { left:-15%; top:40%; opacity:0; transform:translateY(-50%) scale(.2) scaleX(2.5); }
+  15%  { opacity:1; }
+  50%  { left:45%; top:40%; opacity:1; transform:translateY(-50%) scale(1.8);
+         filter:drop-shadow(4px 6px 12px rgba(0,0,0,.3)) saturate(1.8) brightness(1.1) blur(3px); }
+  85%  { opacity:1; }
+  100% { left:115%; top:40%; opacity:0; transform:translateY(-50%) scale(.2) scaleX(2.5); filter:blur(5px); }
+}
+
+/* Melt — arrives normally, then oozes into a puddle */
+@keyframes duckMelt {
+  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
+  30%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1); }
+  50%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1) skewX(0); }
+  70%  { left:40%; top:45%; opacity:.9; transform:translateY(-50%) scaleX(1.4) scaleY(.6) skewX(5deg);
+         filter:drop-shadow(4px 6px 12px rgba(0,0,0,.3)) saturate(1.2) brightness(.9); }
+  90%  { left:40%; top:52%; opacity:.5; transform:translateY(-50%) scaleX(2) scaleY(.2) skewX(10deg);
+         filter:drop-shadow(4px 6px 12px rgba(0,0,0,.2)) saturate(.8) brightness(.7) blur(2px); }
+  100% { left:40%; top:55%; opacity:0; transform:translateY(-50%) scaleX(2.5) scaleY(.05); filter:blur(5px); }
+}
+
+/* Enter-and-shake — used before shatter / split */
+@keyframes duckEnterShake {
+  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
+  55%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.1); }
+  63%  { transform:translateY(-50%) scale(1.1) rotate(-6deg); }
+  71%  { transform:translateY(-50%) scale(1.1) rotate(6deg); }
+  79%  { transform:translateY(-50%) scale(1.1) rotate(-4deg); }
+  87%  { transform:translateY(-50%) scale(1.1) rotate(4deg); }
+  95%  { transform:translateY(-50%) scale(1.1) rotate(-2deg); }
+  100% { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.1) rotate(0); }
+}
+
+/* Fragment pieces for shatter / split */
+.ducky-fragment {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform .8s cubic-bezier(.25,.46,.45,.94), opacity .8s ease-out;
+  filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.3)) saturate(1.8) brightness(1.1);
+}
+
+/* Spark particles for inflate-pop */
+.ducky-spark {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: transform .6s cubic-bezier(.2,.8,.3,1), opacity .6s ease-out;
+}
+
   /* PHOTO GALLERY */
   .photo-gallery { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:16px; }
   .gallery-item { 
@@ -152,13 +293,15 @@
       <br><br>
       <model-viewer
         class="rubber-ducky"
+        id="ducky"
         src="https://sam-motamed.github.io/ducky.glb"
         auto-rotate
         rotation-per-second="720deg"
+        interaction-prompt="none"
         camera-orbit="45deg 75deg 105%"
         disable-zoom disable-pan disable-tap
-        loading="lazy"
-        style="display:block;width:160px;height:160px;float:right;margin:0 0 8px 16px;border-radius:24px;border:3px dashed var(--border-dashed);pointer-events:none;"
+        loading="eager"
+        style="pointer-events:none;visibility:hidden;"
       ></model-viewer>
       <span style="position:relative;z-index:1;">📧 <a href="mailto:katelynlyu@163.com">katelynlyu@163.com</a> &nbsp;·&nbsp;
       📍 China (Asia/Shanghai)</span>
@@ -265,6 +408,183 @@
     </p>
   </div>
 </section>
+
+<script>
+
+    (function() {
+      var heroText = document.querySelector('.hero-text');
+      var ducky = document.getElementById('ducky');
+      var flying = false;
+      var duckyReady = false;
+
+      ducky.addEventListener('load', function() {
+        duckyReady = true;
+        ducky.style.visibility = 'visible';
+      });
+
+      var cssAnims = [
+        'anim-sweep', 'anim-explode', 'anim-bounce',
+        'anim-spinout', 'anim-inflate', 'anim-zoomby', 'anim-melt'
+      ];
+      var jsAnims = ['shatter', 'split'];
+      var allAnims = cssAnims.concat(jsAnims);
+
+      function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+
+      function resetDucky() {
+        cssAnims.concat(['anim-enter']).forEach(function(c) { ducky.classList.remove(c); });
+        ducky.style.cssText = 'pointer-events:none; visibility:visible;';
+        flying = false;
+      }
+
+      /* Snapshot the model-viewer for fragment effects */
+      function getSnapshot() {
+        try { return ducky.toDataURL('image/png'); } catch(e) { return null; }
+      }
+
+      /* Build fragment divs at the ducky's current viewport position */
+      function makeFragments(imgUrl, rect, clips, offsets) {
+        var frags = [];
+        clips.forEach(function(clip, i) {
+          var el = document.createElement('div');
+          el.className = 'ducky-fragment';
+          el.style.width  = rect.width  + 'px';
+          el.style.height = rect.height + 'px';
+          el.style.left   = rect.left   + 'px';
+          el.style.top    = rect.top    + 'px';
+          el.style.opacity = '1';
+          if (imgUrl) {
+            el.style.backgroundImage = 'url(' + imgUrl + ')';
+            el.style.backgroundSize  = '100% 100%';
+          } else {
+            el.style.backgroundColor = '#f5c518';
+            el.style.borderRadius = '50%';
+          }
+          el.style.clipPath       = clip;
+          el.style.webkitClipPath = clip;
+          document.body.appendChild(el);
+          frags.push({ el: el, off: offsets[i] });
+        });
+        return frags;
+      }
+
+      /* Animate fragments outward, then clean up */
+      function scatter(frags, ms) {
+        frags[0].el.offsetHeight; /* force reflow */
+        frags.forEach(function(f) {
+          f.el.style.transform = 'translate(' + f.off.x + 'px,' + f.off.y + 'px) rotate(' + f.off.r + 'deg) scale(' + f.off.s + ')';
+          f.el.style.opacity = '0';
+        });
+        setTimeout(function() {
+          frags.forEach(function(f) { f.el.remove(); });
+          resetDucky();
+        }, ms || 900);
+      }
+
+      /* Burst small sparks outward (used after inflate-pop) */
+      function sparks(cx, cy, count) {
+        var colors = ['#f5c518','#ff6b35','#ffe066','#fff','#ffa94d'];
+        for (var i = 0; i < count; i++) {
+          var s = document.createElement('div');
+          s.className = 'ducky-spark';
+          s.style.left = cx + 'px';
+          s.style.top  = cy + 'px';
+          s.style.background = colors[i % colors.length];
+          s.style.opacity = '1';
+          var sz = 4 + Math.random() * 10;
+          s.style.width = sz + 'px';
+          s.style.height = sz + 'px';
+          document.body.appendChild(s);
+          var angle = (i / count) * Math.PI * 2 + (Math.random() - .5);
+          var dist  = 80 + Math.random() * 160;
+          (function(el, a, d) {
+            el.offsetHeight;
+            el.style.transform = 'translate(' + (Math.cos(a)*d) + 'px,' + (Math.sin(a)*d) + 'px) scale(.2)';
+            el.style.opacity = '0';
+            setTimeout(function() { el.remove(); }, 700);
+          })(s, angle, dist);
+        }
+      }
+
+      /* SHATTER — enter, shake, then burst into 8 triangular shards */
+      function runShatter() {
+        ducky.classList.add('anim-enter');
+        ducky.addEventListener('animationend', function h() {
+          ducky.removeEventListener('animationend', h);
+          var rect = ducky.getBoundingClientRect();
+          var img  = getSnapshot();
+          ducky.style.opacity = '0';
+
+          var clips = [], offsets = [], n = 8, dist = 220;
+          for (var i = 0; i < n; i++) {
+            var a1 = (i / n) * 360, a2 = ((i + 1) / n) * 360;
+            var toX = function(deg) { return 50 + 50 * Math.cos(deg * Math.PI / 180); };
+            var toY = function(deg) { return 50 + 50 * Math.sin(deg * Math.PI / 180); };
+            clips.push('polygon(50% 50%,' + toX(a1)+'% '+toY(a1)+'%,' + toX(a2)+'% '+toY(a2)+'%)');
+            var mid = ((a1 + a2) / 2) * Math.PI / 180;
+            offsets.push({
+              x: Math.cos(mid) * dist * (.7 + Math.random() * .6),
+              y: Math.sin(mid) * dist * (.7 + Math.random() * .6),
+              r: (Math.random() - .5) * 360,
+              s: .2 + Math.random() * .3
+            });
+          }
+          scatter(makeFragments(img, rect, clips, offsets), 1000);
+        });
+      }
+
+      /* SPLIT — enter, shake, then crack into two halves */
+      function runSplit() {
+        ducky.classList.add('anim-enter');
+        ducky.addEventListener('animationend', function h() {
+          ducky.removeEventListener('animationend', h);
+          var rect = ducky.getBoundingClientRect();
+          var img  = getSnapshot();
+          ducky.style.opacity = '0';
+
+          var clips = ['inset(0 0 50% 0)', 'inset(50% 0 0 0)'];
+          var offsets = [
+            { x: -60 - Math.random()*40, y: -160 - Math.random()*40, r: -20 - Math.random()*20, s: .7 },
+            { x:  60 + Math.random()*40, y:  160 + Math.random()*40, r:  20 + Math.random()*20, s: .7 }
+          ];
+          scatter(makeFragments(img, rect, clips, offsets), 1100);
+        });
+      }
+
+      /* Wire up the inflate-pop spark burst via a timed callback */
+      function runInflate() {
+        ducky.classList.add('anim-inflate');
+        /* Pop happens at ~85% of 2.2s ≈ 1870ms */
+        setTimeout(function() {
+          var r = ducky.getBoundingClientRect();
+          sparks(r.left + r.width / 2, r.top + r.height / 2, 18);
+        }, 1860);
+        ducky.addEventListener('animationend', function h() {
+          ducky.removeEventListener('animationend', h);
+          resetDucky();
+        });
+      }
+
+      heroText.addEventListener('mouseenter', function() {
+        if (flying || !duckyReady) return;
+        flying = true;
+
+        var anim = pick(allAnims);
+
+        if (anim === 'shatter')      return runShatter();
+        if (anim === 'split')        return runSplit();
+        if (anim === 'anim-inflate') return runInflate();
+
+        /* All other CSS-only animations */
+        ducky.classList.add(anim);
+        ducky.addEventListener('animationend', function h() {
+          ducky.removeEventListener('animationend', h);
+          resetDucky();
+        });
+      });
+    })();
+  
+</script>
 
 <script>
   document.getElementById('inboxForm').addEventListener('submit', function(e) {
