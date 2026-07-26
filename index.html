@@ -58,7 +58,7 @@
   }
   @keyframes rainbow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
 
-  .bio { position:relative; overflow:hidden; }
+  .bio { position:relative; overflow:visible; min-height:180px; }
 
 /* --- Rubber Ducky Easter Egg --- */
 .hero-text {
@@ -220,8 +220,7 @@
     .photo-gallery { grid-template-columns:1fr; }
   }
 
-  .rubber-ducky { display:none; }
-  .rubber-ducky.loaded, model-viewer.rubber-ducky { display:block; }
+
 
   /* TAGS */
   .tags { display:flex; flex-wrap:wrap; gap:8px; }
@@ -412,7 +411,7 @@
 <script>
 
     (function() {
-      var heroText = document.querySelector('.hero-text');
+      var heroText = document.querySelector('.bio');
       var ducky = document.getElementById('ducky');
       var flying = false;
       var duckyReady = false;
