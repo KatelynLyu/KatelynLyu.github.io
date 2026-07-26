@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Katelyn Lyu — Product Manager focusing on World Model, Robotics, Deep Learning, and BCI.">
 <title>🦄 Katelyn Lyu</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
   :root {
     --bg: #e8f4fd; --card: #ffffff; --text: #1a3a5c; --text2: #4a7a9f; --muted: #6a9ac0;
@@ -56,6 +57,9 @@
     box-shadow: 3px 3px 0 #90caf9; margin-bottom:16px;
   }
   @keyframes rainbow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+  .rubber-ducky { display:none; }
+  .rubber-ducky.loaded, model-viewer.rubber-ducky { display:block; }
 
   /* TAGS */
   .tags { display:flex; flex-wrap:wrap; gap:8px; }
@@ -118,6 +122,16 @@
 
 <header class="header">
   <img class="avatar" src="assets/avatar.jpg" alt="Katelyn Lyu">
+  <model-viewer
+    class="rubber-ducky"
+    src="https://sam-motamed.github.io/ducky.glb"
+    auto-rotate
+    rotation-per-second="720deg"
+    camera-orbit="45deg 75deg 105%"
+    disable-zoom disable-pan disable-tap
+    loading="lazy"
+    style="width:100px;height:100px;border-radius:50%;border:3px dashed var(--pink);box-shadow:3px 3px 0 #ffb3b3;flex-shrink:0;"
+  ></model-viewer>
   <div class="info">
     <h1>🦄 Katelyn Lyu</h1>
     <div class="role">Product Manager @ BlueBird · AI / Robotics / DL / BCI</div>
