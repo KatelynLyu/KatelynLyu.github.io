@@ -3,625 +3,525 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Katelyn Lyu —材料学·经济学双学士，中国图像图形学会会员。6年算法及Infra职位运作经验，服务过字节、阿里、小红书等多家公司。">
-<title>🦄 Katelyn Lyu</title>
+<title>Human Card — Katelyn Lv</title>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 <style>
-  :root {
-    --bg: #e8f4fd; --card: #ffffff; --text: #1a3a5c; --text2: #4a7a9f; --muted: #6a9ac0;
-    --link: #2a6a9f; --link-hover: #1565c0; --border-dashed: #90caf9;
-    --pink: #ff6b6b; --yellow: #feca57; --blue: #48dbfb; --purple: #ff9ff3; --green: #2ecc71;
-    --max-w: 820px; --radius: 20px;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", sans-serif;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #1a1a2e;
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Comic Sans MS', 'Chalkboard SE', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height:1.7; padding:40px 20px; max-width:var(--max-w); margin:0 auto; }
-  a { color:var(--link); text-decoration:none; transition:color .2s; }
-  a:hover { color:var(--link-hover); }
+  .card {
+    width: 100%;
+    max-width: 760px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  }
 
-  /* DASHED HEADER */
+  /* Header with duck trigger */
+  #duck-trigger {
+    position: relative;
+    overflow: visible;
+  }
   .header {
-    display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start;
-    padding:24px; background:linear-gradient(135deg, #dceefb, #fce4ec);
-    border: 3px dashed var(--border-dashed); border-radius: var(--radius);
-    box-shadow: 4px 4px 0 #a8d4f0; margin-bottom:24px;
+    margin-bottom: 36px;
   }
-  .avatar {
-    width:100px; height:100px; border-radius:50%; object-fit:cover;
-    border: 3px dashed var(--pink); box-shadow: 3px 3px 0 #ffb3b3; flex-shrink:0;
-  }
-  .info h1 { font-size:26px; font-weight:700; letter-spacing:-.5px; }
-  .info .role { font-size:14px; color:var(--text2); margin-top:2px; font-weight:600; }
-  .info .bio { font-size:13px; margin-top:8px; line-height:1.8; }
-  .links { margin-top:10px; display:flex; flex-wrap:wrap; gap:10px; font-size:12px; }
-  .links a {
-    display:inline-flex; align-items:center; gap:4px;
-    padding:5px 14px; background:var(--card); border:2px dashed var(--border-dashed);
-    border-radius:14px; font-weight:600; box-shadow: 2px 2px 0 #b8d8ef;
-    transition: all .2s;
-  }
-  .links a:hover { 
-    border-color: var(--link-hover); border-style: solid; 
-    box-shadow: 3px 3px 0 var(--link-hover); transform: translate(-1px,-1px); 
-    text-decoration: none;
-  }
-
-  @media (max-width:600px) { .header { flex-direction:column; align-items:center; text-align:center; } }
-
-  /* SECTIONS */
-  .section { margin:28px 0; }
-  .section h2 {
-    font-size:17px; font-weight:700; padding:10px 18px;
-    background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-    background-size: 200% 200%; animation: rainbow 4s ease infinite;
-    color: #1a1025; border-radius: var(--radius); display:inline-block;
-    box-shadow: 3px 3px 0 #90caf9; margin-bottom:16px;
+  .name {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #ee7752 50%, #e73c7e 75%, #23a6d5 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow 4s ease infinite;
   }
   @keyframes rainbow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  .title-line { font-size: 16px; color: #555; margin-bottom: 4px; }
+  .location { font-size: 14px; color: #888; }
 
-  .bio { position:relative; overflow:visible; min-height:180px; }
-
-/* --- Rubber Ducky Easter Egg --- */
-.hero-text {
-  position: relative;
-  overflow: hidden;
-}
-
-.rubber-ducky {
-  position: absolute;
-  width: 175px;
-  height: 175px;
-  top: 40%;
-  left: -200px;
-  transform: translateY(-50%);
-  pointer-events: none;
-  opacity: 0;
-  z-index: 100;
-  filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.3)) saturate(1.8) brightness(1.1);
-  background: transparent;
-  --progress-bar-color: transparent;
-  --poster-color: transparent;
-}
-
-/* Animation classes */
-.rubber-ducky.anim-sweep    { animation: duckSweep 2s ease-in-out forwards; }
-.rubber-ducky.anim-explode  { animation: duckExplode 2s ease-in-out forwards; }
-.rubber-ducky.anim-bounce   { animation: duckDrop 2.5s cubic-bezier(.22,.68,.31,1) forwards; }
-.rubber-ducky.anim-spinout  { animation: duckSpinOut 2.2s ease-in forwards; }
-.rubber-ducky.anim-inflate  { animation: duckInflate 2.2s ease-in-out forwards; }
-.rubber-ducky.anim-zoomby   { animation: duckZoomBy 0.8s linear forwards; }
-.rubber-ducky.anim-melt     { animation: duckMelt 2.5s ease-in-out forwards; }
-.rubber-ducky.anim-enter    { animation: duckEnterShake 1.2s ease-out forwards; }
-
-/* Sweep — classic fly-across */
-@keyframes duckSweep {
-  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
-  15%  { opacity:1; transform:translateY(-50%) scale(1); }
-  45%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.1); }
-  55%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.1); }
-  100% { left:115%; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
-}
-
-/* Explode — fly in, swell, blow up in a fireball */
-@keyframes duckExplode {
-  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
-  30%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1); }
-  50%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.3);
-         filter:drop-shadow(0 0 20px rgba(255,150,0,.6)) saturate(2) brightness(1.4); }
-  75%  { left:40%; top:40%; opacity:.7; transform:translateY(-50%) scale(3.5) rotate(20deg);
-         filter:drop-shadow(0 0 50px rgba(255,80,0,.8)) saturate(2.5) brightness(2); }
-  100% { left:40%; top:40%; opacity:0; transform:translateY(-50%) scale(7) rotate(45deg);
-         filter:drop-shadow(0 0 80px rgba(255,30,0,.4)) brightness(3) blur(15px); }
-}
-
-/* Drop — fall from above, squash-bounce, tumble away */
-@keyframes duckDrop {
-  0%   { left:40%; top:-200px; opacity:0; transform:translate(-50%,0) scale(.8); }
-  8%   { opacity:1; }
-  35%  { top:40%; transform:translate(-50%,0) scale(1.15,.85); }
-  45%  { top:22%; transform:translate(-50%,0) scale(.9,1.1); }
-  58%  { top:40%; transform:translate(-50%,0) scale(1.08,.92); }
-  66%  { top:30%; transform:translate(-50%,0) scale(.95,1.05); }
-  76%  { top:40%; transform:translate(-50%,0) scale(1); }
-  88%  { top:40%; opacity:1; transform:translate(-50%,0) scale(1); }
-  100% { top:120%; opacity:0; transform:translate(-50%,0) scale(.4) rotate(200deg); }
-}
-
-/* Spin-out — spirals in, then flings wildly off-screen */
-@keyframes duckSpinOut {
-  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7) rotate(0); }
-  25%  { left:35%; top:40%; opacity:1; transform:translateY(-50%) scale(1) rotate(360deg); }
-  45%  { left:40%; top:38%; opacity:1; transform:translateY(-50%) scale(1.1) rotate(720deg); }
-  100% { left:110%; top:-30%; opacity:0; transform:translateY(-50%) scale(.2) rotate(2880deg); }
-}
-
-/* Inflate-pop — swells bigger and bigger, then *POP* vanishes */
-@keyframes duckInflate {
-  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
-  25%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1); }
-  50%  { transform:translateY(-50%) scale(1.5); }
-  70%  { transform:translateY(-50%) scale(2.2);
-         filter:drop-shadow(4px 6px 20px rgba(0,0,0,.4)) saturate(2) brightness(1.4); }
-  84%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(3);
-         filter:drop-shadow(4px 6px 30px rgba(0,0,0,.5)) saturate(2.2) brightness(1.6); }
-  85%  { opacity:0; transform:translateY(-50%) scale(.01); }
-  100% { left:40%; top:40%; opacity:0; transform:translateY(-50%) scale(0); }
-}
-
-/* Zoom-by — blistering speed fly-through, motion-blurred */
-@keyframes duckZoomBy {
-  0%   { left:-15%; top:40%; opacity:0; transform:translateY(-50%) scale(.2) scaleX(2.5); }
-  15%  { opacity:1; }
-  50%  { left:45%; top:40%; opacity:1; transform:translateY(-50%) scale(1.8);
-         filter:drop-shadow(4px 6px 12px rgba(0,0,0,.3)) saturate(1.8) brightness(1.1) blur(3px); }
-  85%  { opacity:1; }
-  100% { left:115%; top:40%; opacity:0; transform:translateY(-50%) scale(.2) scaleX(2.5); filter:blur(5px); }
-}
-
-/* Melt — arrives normally, then oozes into a puddle */
-@keyframes duckMelt {
-  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
-  30%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1); }
-  50%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1) skewX(0); }
-  70%  { left:40%; top:45%; opacity:.9; transform:translateY(-50%) scaleX(1.4) scaleY(.6) skewX(5deg);
-         filter:drop-shadow(4px 6px 12px rgba(0,0,0,.3)) saturate(1.2) brightness(.9); }
-  90%  { left:40%; top:52%; opacity:.5; transform:translateY(-50%) scaleX(2) scaleY(.2) skewX(10deg);
-         filter:drop-shadow(4px 6px 12px rgba(0,0,0,.2)) saturate(.8) brightness(.7) blur(2px); }
-  100% { left:40%; top:55%; opacity:0; transform:translateY(-50%) scaleX(2.5) scaleY(.05); filter:blur(5px); }
-}
-
-/* Enter-and-shake — used before shatter / split */
-@keyframes duckEnterShake {
-  0%   { left:-200px; top:40%; opacity:0; transform:translateY(-50%) scale(.7); }
-  55%  { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.1); }
-  63%  { transform:translateY(-50%) scale(1.1) rotate(-6deg); }
-  71%  { transform:translateY(-50%) scale(1.1) rotate(6deg); }
-  79%  { transform:translateY(-50%) scale(1.1) rotate(-4deg); }
-  87%  { transform:translateY(-50%) scale(1.1) rotate(4deg); }
-  95%  { transform:translateY(-50%) scale(1.1) rotate(-2deg); }
-  100% { left:40%; top:40%; opacity:1; transform:translateY(-50%) scale(1.1) rotate(0); }
-}
-
-/* Fragment pieces for shatter / split */
-.ducky-fragment {
-  position: fixed;
-  pointer-events: none;
-  z-index: 10000;
-  transition: transform .8s cubic-bezier(.25,.46,.45,.94), opacity .8s ease-out;
-  filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.3)) saturate(1.8) brightness(1.1);
-}
-
-/* Spark particles for inflate-pop */
-.ducky-spark {
-  position: fixed;
-  pointer-events: none;
-  z-index: 10000;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  transition: transform .6s cubic-bezier(.2,.8,.3,1), opacity .6s ease-out;
-}
-
-  /* PHOTO GALLERY */
-  .photo-gallery { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:16px; }
-  .gallery-item { 
-    background:var(--card); border:3px dashed var(--border-dashed);
-    border-radius:var(--radius); overflow:hidden;
-    box-shadow: 3px 3px 0 #a8d4f0; transition: all .2s;
+  /* Rubber Ducky */
+  .rubber-ducky {
+    position: absolute;
+    width: 175px;
+    height: 175px;
+    top: 50%;
+    left: -200px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 100;
+    filter: drop-shadow(4px 6px 12px rgba(0,0,0,0.3)) saturate(1.8) brightness(1.1);
+    background: transparent;
+    --progress-bar-color: transparent;
+    --poster-color: transparent;
   }
-  .gallery-item:hover { 
-    border-color: var(--link-hover); border-style: solid;
-    box-shadow: 5px 5px 0 var(--link-hover); transform: translate(-2px,-2px);
+  .rubber-ducky.anim-sweep    { animation: duckSweep 2s ease-in-out forwards; }
+  .rubber-ducky.anim-explode  { animation: duckExplode 2s ease-in-out forwards; }
+  .rubber-ducky.anim-bounce   { animation: duckDrop 2.5s cubic-bezier(.22,.68,.31,1) forwards; }
+  .rubber-ducky.anim-spinout  { animation: duckSpinOut 2.2s ease-in forwards; }
+  .rubber-ducky.anim-inflate  { animation: duckInflate 2.2s ease-in-out forwards; }
+  .rubber-ducky.anim-zoomby   { animation: duckZoomBy 0.8s linear forwards; }
+  .rubber-ducky.anim-melt     { animation: duckMelt 2.5s ease-in-out forwards; }
+  .rubber-ducky.anim-enter    { animation: duckEnterShake 1.2s ease-out forwards; }
+  @keyframes duckSweep {
+    0%   { left:-200px; top:50%; opacity:0; transform:translateY(-50%) scale(.7); }
+    15%  { opacity:1; transform:translateY(-50%) scale(1); }
+    45%  { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(1.1); }
+    55%  { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(1.1); }
+    100% { left:115%; top:50%; opacity:0; transform:translateY(-50%) scale(.7); }
   }
-  .gallery-img-wrapper { width:100%; aspect-ratio:4/3; overflow:hidden; }
-  .gallery-img-wrapper img { width:100%; height:100%; object-fit:cover; display:block; }
-  .gallery-caption { font-size:12px; color:var(--text2); padding:8px 12px; text-align:center; }
-
-  @media (max-width:600px) { 
-    .photo-gallery { grid-template-columns:1fr; }
+  @keyframes duckExplode {
+    0%   { left:-200px; top:50%; opacity:0; transform:translateY(-50%) scale(.7); }
+    30%  { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(1); }
+    50%  { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(1.3); filter:drop-shadow(0 0 20px rgba(255,150,0,.6)) saturate(2) brightness(1.4); }
+    75%  { left:50%; top:50%; opacity:.7; transform:translateY(-50%) scale(3.5) rotate(20deg); filter:drop-shadow(0 0 50px rgba(255,80,0,.8)) saturate(2.5) brightness(2); }
+    100% { left:50%; top:50%; opacity:0; transform:translateY(-50%) scale(7) rotate(45deg); filter:drop-shadow(0 0 80px rgba(255,30,0,.4)) brightness(3) blur(15px); }
+  }
+  @keyframes duckDrop {
+    0%   { left:50%; top:-200px; opacity:0; transform:translate(-50%,0) scale(.8); }
+    8%   { opacity:1; }
+    35%  { top:50%; transform:translate(-50%,0) scale(1.15,.85); }
+    45%  { top:30%; transform:translate(-50%,0) scale(.9,1.1); }
+    58%  { top:50%; transform:translate(-50%,0) scale(1.08,.92); }
+    66%  { top:38%; transform:translate(-50%,0) scale(.95,1.05); }
+    76%  { top:50%; transform:translate(-50%,0) scale(1); }
+    88%  { top:50%; opacity:1; transform:translate(-50%,0) scale(1); }
+    100% { top:180%; opacity:0; transform:translate(-50%,0) scale(.4) rotate(200deg); }
+  }
+  @keyframes duckSpinOut {
+    0%   { left:-200px; top:50%; opacity:0; transform:translateY(-50%) scale(.7) rotate(0); }
+    25%  { left:45%; top:50%; opacity:1; transform:translateY(-50%) scale(1) rotate(360deg); }
+    45%  { left:50%; top:48%; opacity:1; transform:translateY(-50%) scale(1.1) rotate(720deg); }
+    100% { left:180%; top:10%; opacity:0; transform:translateY(-50%) scale(.2) rotate(2880deg); }
+  }
+  @keyframes duckInflate {
+    0%   { left:-200px; top:50%; opacity:0; transform:translateY(-50%) scale(.7); }
+    25%  { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(1); }
+    50%  { transform:translateY(-50%) scale(1.5); }
+    70%  { transform:translateY(-50%) scale(2.2); filter:drop-shadow(4px 6px 20px rgba(0,0,0,.4)) saturate(2) brightness(1.4); }
+    84%  { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(3); filter:drop-shadow(4px 6px 30px rgba(0,0,0,.5)) saturate(2.2) brightness(1.6); }
+    85%  { opacity:0; transform:translateY(-50%) scale(.01); }
+    100% { left:50%; top:50%; opacity:0; transform:translateY(-50%) scale(0); }
+  }
+  @keyframes duckZoomBy {
+    0%   { left:-15%; top:50%; opacity:0; transform:translateY(-50%) scale(.2) scaleX(2.5); }
+    15%  { opacity:1; }
+    50%  { left:55%; top:50%; opacity:1; transform:translateY(-50%) scale(1.8); filter:drop-shadow(4px 6px 12px rgba(0,0,0,.3)) saturate(1.8) brightness(1.1) blur(3px); }
+    85%  { opacity:1; }
+    100% { left:120%; top:50%; opacity:0; transform:translateY(-50%) scale(.2) scaleX(2.5); filter:blur(5px); }
+  }
+  @keyframes duckMelt {
+    0%   { left:-200px; top:50%; opacity:0; transform:translateY(-50%) scale(.7); }
+    30%  { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(1); }
+    50%  { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(1) skewX(0); }
+    70%  { left:50%; top:55%; opacity:.9; transform:translateY(-50%) scaleX(1.4) scaleY(.6) skewX(5deg); filter:drop-shadow(4px 6px 12px rgba(0,0,0,.3)) saturate(1.2) brightness(.9); }
+    90%  { left:50%; top:62%; opacity:.5; transform:translateY(-50%) scaleX(2) scaleY(.2) skewX(10deg); filter:drop-shadow(4px 6px 12px rgba(0,0,0,.2)) saturate(.8) brightness(.7) blur(2px); }
+    100% { left:50%; top:65%; opacity:0; transform:translateY(-50%) scaleX(2.5) scaleY(.05); filter:blur(5px); }
+  }
+  @keyframes duckEnterShake {
+    0%   { left:-200px; top:50%; opacity:0; transform:translateY(-50%) scale(.7); }
+    55%  { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(1.1); }
+    63%  { transform:translateY(-50%) scale(1.1) rotate(-6deg); }
+    71%  { transform:translateY(-50%) scale(1.1) rotate(6deg); }
+    79%  { transform:translateY(-50%) scale(1.1) rotate(-4deg); }
+    87%  { transform:translateY(-50%) scale(1.1) rotate(4deg); }
+    95%  { transform:translateY(-50%) scale(1.1) rotate(-2deg); }
+    100% { left:50%; top:50%; opacity:1; transform:translateY(-50%) scale(1.1) rotate(0); }
+  }
+  .ducky-fragment {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform .8s cubic-bezier(.25,.46,.45,.94), opacity .8s ease-out;
+    filter: drop-shadow(2px 3px 6px rgba(0,0,0,0.3)) saturate(1.8) brightness(1.1);
+  }
+  .ducky-spark {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transition: transform .6s cubic-bezier(.2,.8,.3,1), opacity .6s ease-out;
   }
 
-
-
-  /* TAGS */
-  .tags { display:flex; flex-wrap:wrap; gap:8px; }
-  .tags span { 
-    font-size:12px; padding:6px 16px; border-radius:20px; font-weight:700;
-    border: 2.5px dashed var(--border-dashed); box-shadow: 2px 2px 0 #b8d8ef;
-    background: var(--card); color: var(--link);
+  /* Section */
+  .section { margin-bottom: 32px; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #999;
+    margin-bottom: 12px;
   }
 
-  /* NEWS */
-  .news-item { 
-    display:flex; gap:10px; font-size:13px; margin-bottom:6px;
-    padding:8px 14px; background:var(--card); border: 2.5px dashed #b8d8ef;
-    border-radius:14px; box-shadow: 2px 2px 0 #e0ecf8;
-  }
-  .news-item .date { color:var(--pink); font-weight:700; white-space:nowrap; min-width:80px; }
-
-  /* PROJECT CARDS */
-  .project {
-    background:var(--card); border: 3px dashed var(--border-dashed);
-    border-radius: var(--radius); padding:18px; margin-bottom:14px;
-    box-shadow: 3px 3px 0 #a8d4f0; transition: all .2s;
-  }
-  .project:hover { 
-    border-color: var(--link-hover); border-style: solid;
-    box-shadow: 5px 5px 0 var(--link-hover); transform: translate(-2px,-2px);
-  }
-  .project-title { font-size:15px; font-weight:700; margin-bottom:6px; }
-  .project-desc { font-size:13px; color:var(--text2); margin-bottom:8px; line-height:1.7; }
-  .project-meta { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
-  .project-meta .tag { 
-    font-size:11px; padding:3px 10px; border-radius:12px; font-weight:700;
-    background: linear-gradient(135deg, #e8f4fd, #fce4ec); 
-    color: var(--text2); border: 2px dashed #c0d8ec;
-  }
-  .project-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; font-size:12px; }
-  .project-links a { 
-    font-weight:700; padding:4px 12px; border-radius:12px;
-    background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-    background-size: 200% 200%; animation: rainbow 4s ease infinite;
-    color: #1a1025; border: none; box-shadow: 2px 2px 0 #c0d8ec;
-    transition: all .2s;
-  }
-  .project-links a:hover { box-shadow: 3px 3px 0 #a8d4f0; transform: translate(-1px,-1px); text-decoration:none; }
-
-  /* RAINBOW ACCENTS */
-  .rainbow-divider { 
-    height:3px; border:none; border-radius:3px; margin:24px 0;
-    background: linear-gradient(90deg, var(--pink), var(--yellow), var(--green), var(--blue), var(--purple));
+  /* Tags */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 6px;
+    background: #f0f4ff;
+    color: #3b5ccc;
+    font-weight: 500;
   }
 
-  .footer { 
-    margin-top:36px; padding:16px; text-align:center; 
-    font-size:13px; font-weight:700; color:var(--muted);
-    border-top: 3px dashed var(--border-dashed);
+  /* Bullet list */
+  .bullet-list { list-style: none; }
+  .bullet-list li {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    padding-left: 16px;
+    position: relative;
+  }
+  .bullet-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #aaa;
+  }
+
+  /* Stat row */
+  .stat-row {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat .number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #3b5ccc;
+  }
+  .stat .stat-label {
+    font-size: 12px;
+    color: #999;
+    margin-top: 2px;
+  }
+
+  /* Divider */
+  hr { border: none; border-top: 1px solid #eee; margin: 32px 0; }
+
+  /* Concept blocks */
+  .concept-block {
+    background: #fafbfc;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+  .concept-block .cb-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+  }
+  .concept-block .cb-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* Project cards */
+  .project-card {
+    background: #fafbfc;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-left: 3px solid #3b5ccc;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-left-color: #667eea; }
+  .project-card .pc-title { font-size: 15px; font-weight: 600; color: #1a1a2e; margin-bottom: 4px; }
+  .project-card .pc-desc { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 10px; }
+  .project-card .pc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .project-card .pc-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1.5px dashed #c0d8ec;
+    color: #5a6080;
+    background: #fff;
+  }
+
+  /* News timeline */
+  .news-item {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    padding: 8px 14px;
+  }
+  .news-item .date { color: #3b5ccc; font-weight: 700; white-space: nowrap; min-width: 110px; font-size: 13px; }
+  .news-item .text { color: #555; line-height: 1.5; }
+
+  /* Footer */
+  .footer { font-size: 12px; color: #bbb; margin-top: 8px; }
+
+  @media (max-width: 500px) {
+    .card { padding: 24px; }
+    .stat-row { gap: 20px; }
+    .news-item { flex-direction: column; gap: 2px; }
+    .news-item .date { min-width: unset; }
+    .name { font-size: 26px; }
   }
 </style>
 </head>
 <body>
+<div class="card">
 
-<header class="header">
-  <img class="avatar" src="assets/avatar.jpg" alt="Katelyn Lyu">
-  <div class="info">
-    <h1>🦄 Katelyn Lyu</h1>
-    <div class="role">Tech Talent Partner · AI / Infra / Robotics</div>
-    <div class="bio">
-      Dual B.A. in Materials Science &amp; Economics. Member of China Society of Image and Graphics. 6 years of experience in AI algorithm &amp; infrastructure recruitment, covering Code Agent, World Model, AI4Science, model safety, embodied AI foundation models, speech foundation models, VLM foundation models, and more. Successfully served ByteDance, Alibaba, Xiaohongshu, Minimax, Moonshot AI, and other leading companies.
-      <br><br>
-      <model-viewer
-        class="rubber-ducky"
-        id="ducky"
-        src="https://sam-motamed.github.io/ducky.glb"
-        auto-rotate
-        rotation-per-second="720deg"
-        interaction-prompt="none"
-        camera-orbit="45deg 75deg 105%"
-        disable-zoom disable-pan disable-tap
-        loading="eager"
-        style="pointer-events:none;visibility:hidden;"
-      ></model-viewer>
-      <span style="position:relative;z-index:1;">📧 <a href="mailto:katelynlyu@163.com">katelynlyu@163.com</a> &nbsp;·&nbsp;
-      📍 China (Asia/Shanghai)</span>
+  <!-- Duck trigger wrapper: from header through Focus Areas -->
+  <div id="duck-trigger" style="position:relative;overflow:visible;">
+
+  <div class="header">
+    <div class="name">Katelyn Lv</div>
+    <div class="title-line">AI Talent Partner & Research-Driven Sourcer</div>
+    <div class="location">Shanghai · Asia/Shanghai</div>
+  </div>
+
+  <hr>
+
+  <!-- What I Do -->
+  <div class="section">
+    <div class="section-label">What I Do</div>
+    <ul class="bullet-list">
+      <li>Map and recruit top AI researchers & engineers across World Model, Embodied AI, Speech Foundation Models, AIGC, and AI Infra</li>
+    </ul>
+  </div>
+
+  <!-- Focus Areas -->
+  <div class="section">
+    <div class="section-label">Focus Areas</div>
+    <div class="tags">
+      <span class="tag">World Model</span>
+      <span class="tag">Robotics</span>
+      <span class="tag">Deep Learning</span>
+      <span class="tag">Brain-Computer Interface</span>
+      <span class="tag">Embodied AI</span>
+      <span class="tag">Data Infrastructure</span>
+      <span class="tag">Product Strategy</span>
     </div>
-    <div class="links">
-      <a href="https://github.com/KatelynLyu">💻 GitHub</a>
-      <a href="mailto:katelynlyu@163.com">📧 Email</a>
+  </div>
+
+  <model-viewer
+    class="rubber-ducky"
+    id="ducky"
+    src="https://sam-motamed.github.io/ducky.glb"
+    auto-rotate
+    rotation-per-second="720deg"
+    interaction-prompt="none"
+    camera-orbit="45deg 75deg 105%"
+    disable-zoom disable-pan disable-tap
+    loading="eager"
+    style="pointer-events:none;visibility:hidden;"
+  ></model-viewer>
+
+  </div><!-- /duck-trigger -->
+
+  <hr>
+
+  <!-- Self-Built Systems -->
+  <div class="section">
+    <div class="section-label">Self-Built Systems</div>
+    <div class="stat-row">
+      <div class="stat"><span class="number">2000</span><span class="stat-label">Candidates Tracked</span></div>
+      <div class="stat"><span class="number">29</span><span class="stat-label">Benchmark Teams</span></div>
+      <div class="stat"><span class="number">24</span><span class="stat-label">World Models Mapped</span></div>
+      <div class="stat"><span class="number">15+</span><span class="stat-label">Knowledge Entries</span></div>
     </div>
   </div>
-</header>
 
-<section class="section">
-  <h2>🔬 Focus Areas</h2>
-  <div class="tags">
-    <span>🌍 World Model</span><span>🤖 Robotics</span><span>🧠 Deep Learning</span><span>⚡ Brain-Computer Interface</span>
-    <span>🎯 Embodied AI</span><span>📊 Data Infrastructure</span><span>🚀 Product Strategy</span>
-  </div>
-</section>
-
-<div class="rainbow-divider"></div>
-
-<section class="section">
-  <h2>📰 Recent Updates</h2>
-  <div class="news-item"><span class="date">Jul 2026</span><span>Launched <strong>Situated Memory</strong> — domain-based memory architecture for personal AI agents. Paper draft in progress.</span></div>
-  <div class="news-item"><span class="date">Jun 2026</span><span>Built <strong>Money Tracker</strong> — SQLite-powered talent &amp; team tracking dashboard for embodied AI recruitment.</span></div>
-  <div class="news-item"><span class="date">May 2026</span><span>Designed <strong>Tech Radar</strong> — automated market signal scanner for startup funding &amp; talent discovery.</span></div>
-  <div class="news-item"><span class="date">2025–2026</span><span>Developed AI-powered <strong>recruitment intelligence tools</strong>: smart notebook, company profiling, CRM automation.</span></div>
-</section>
-
-<div class="rainbow-divider"></div>
-
-<section class="section">
-  <h2>🚀 Projects</h2>
-
-  <div class="project">
-    <div class="project-title">🎓 Psychosocial Counseling Project @ Tsinghua</div>
-    <div class="project-desc">
-      Admitted as a member of Tsinghua University's Psychosocial Counseling Project (2023).
-      Provided community psychological counseling, completing 20+ hours of volunteer work.
-      Explored how social conventions shape human interactions across diverse populations.
+  <!-- Projects -->
+  <div class="section">
+    <div class="section-label">Projects</div>
+    <div class="project-card">
+      <div class="pc-title">🧠 Situated Memory — Domain-Based Agent Memory Architecture</div>
+      <div class="pc-desc">Novel organizing principle for personal AI agent memory: life domains instead of cognitive mechanisms. 77% context reduction in work sessions. Position paper targeting CHI / CSCW.</div>
+      <div class="pc-tags"><span class="pc-tag">Agent Memory</span><span class="pc-tag">HCI</span><span class="pc-tag">Personal AI</span></div>
     </div>
-    <div class="project-meta"><span class="tag">Psychology</span><span class="tag">Community Service</span><span class="tag">Tsinghua</span></div>
-    <div class="project-links"><a href="https://github.com/KatelynLyu/My-Psychosocial-Counseling-project-in-Tsinghua">💻 GitHub</a></div>
-  </div>
-
-  <div class="project">
-    <div class="project-title">🧠 Situated Memory — Domain-Based Agent Memory Architecture</div>
-    <div class="project-desc">
-      Novel organizing principle for personal AI agent memory: life domains instead of cognitive mechanisms.
-      77% context reduction in work sessions. Position paper targeting CHI / CSCW.
+    <div class="project-card">
+      <div class="pc-title">📊 Money Tracker — Embodied AI Talent Intelligence</div>
+      <div class="pc-desc">Full-stack dashboard (Python + SQLite + vanilla JS) for tracking benchmark teams, world model groups, and professor labs. Collapsible domain tags, layered card views, search-to-expand navigation.</div>
+      <div class="pc-tags"><span class="pc-tag">Dashboard</span><span class="pc-tag">Talent Intelligence</span><span class="pc-tag">SQLite</span></div>
     </div>
-    <div class="project-meta"><span class="tag">Agent Memory</span><span class="tag">HCI</span><span class="tag">Personal AI</span></div>
-    <div class="project-links"><a href="#">📄 Paper (arXiv, in prep)</a></div>
-  </div>
-
-  <div class="project">
-    <div class="project-title">📊 Money Tracker — Embodied AI Talent Intelligence</div>
-    <div class="project-desc">
-      Full-stack dashboard (Python + SQLite + vanilla JS) for tracking benchmark teams, world model groups, and professor labs.
-      Collapsible domain tags, layered card views, search-to-expand navigation.
+    <div class="project-card">
+      <div class="pc-title">🛰️ Tech Radar — Market Signal Scanner</div>
+      <div class="pc-desc">Automated pipeline monitoring startup funding, paper publications, and talent movements in embodied AI. Integrates with Feishu Bitable for collaborative signal processing.</div>
+      <div class="pc-tags"><span class="pc-tag">Market Intelligence</span><span class="pc-tag">Automation</span><span class="pc-tag">Feishu</span></div>
     </div>
-    <div class="project-meta"><span class="tag">Dashboard</span><span class="tag">Talent Intelligence</span><span class="tag">SQLite</span></div>
-    <div class="project-links"><a>Local</a></div>
-  </div>
-
-  <div class="project">
-    <div class="project-title">🛰️ Tech Radar — Market Signal Scanner</div>
-    <div class="project-desc">
-      Automated pipeline monitoring startup funding, paper publications, and talent movements in embodied AI.
-      Integrates with Feishu Bitable for collaborative signal processing.
+    <div class="project-card">
+      <div class="pc-title">📝 Smart Notebook — CRM & Knowledge Base</div>
+      <div class="pc-desc">Local-first knowledge management for candidate profiles, company deep-dives, and structured interview notes. Direct JSON manipulation for data integrity, bypassing the Electron GUI when needed.</div>
+      <div class="pc-tags"><span class="pc-tag">CRM</span><span class="pc-tag">Knowledge Management</span><span class="pc-tag">Electron</span></div>
     </div>
-    <div class="project-meta"><span class="tag">Market Intelligence</span><span class="tag">Automation</span><span class="tag">Feishu</span></div>
-    <div class="project-links"><a>Local</a></div>
   </div>
 
-  <div class="project">
-    <div class="project-title">📝 Smart Notebook — CRM &amp; Knowledge Base</div>
-    <div class="project-desc">
-      Local-first knowledge management for candidate profiles, company deep-dives, and structured interview notes.
-      Direct JSON manipulation for data integrity, bypassing the Electron GUI when needed.
+  <!-- AI Memory & Agent Research -->
+  <div class="section">
+    <div class="section-label">AI Memory & Agent Research</div>
+    <div class="concept-block">
+      <div class="cb-title">Situated Memory</div>
+      <div class="cb-desc">A research project exploring how AI agents should manage memory across sessions and contexts. Core thesis: memory is not a retrieval problem — it's a situation awareness problem. The agent must know what context it's in before it can decide what's relevant. Paper in progress (multi-user validation as key experimental design).</div>
     </div>
-    <div class="project-meta"><span class="tag">CRM</span><span class="tag">Knowledge Management</span><span class="tag">Electron</span></div>
   </div>
 
-</section>
-
-<section class="section">
-  <h2>📬 Inbox</h2>
-  <div style="background:var(--card); border: 3px dashed var(--border-dashed); border-radius:var(--radius); padding:18px; box-shadow: 3px 3px 0 #a8d4f0;">
-    <form id="inboxForm" style="display:flex; flex-direction:column; gap:12px;">
-      <input type="text" id="inboxName" placeholder="Your name" required style="padding:10px 14px; background:var(--card); border:2.5px dashed var(--border-dashed); border-radius:14px; font-size:13px; font-family:inherit; outline:none; color:var(--text);">
-      <input type="email" id="inboxEmail" placeholder="Your email" required style="padding:10px 14px; background:var(--card); border:2.5px dashed var(--border-dashed); border-radius:14px; font-size:13px; font-family:inherit; outline:none; color:var(--text);">
-      <textarea id="inboxMsg" rows="4" placeholder="Your message..." required style="padding:10px 14px; background:var(--card); border:2.5px dashed var(--border-dashed); border-radius:14px; font-size:13px; font-family:inherit; outline:none; color:var(--text); resize:vertical;"></textarea>
-      <button type="submit" style="padding:12px; border:none; border-radius:16px; font-size:14px; font-weight:700; font-family:inherit; cursor:pointer;
-        background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3); background-size:200% 200%;
-        animation: rainbow 4s ease infinite; color:#1a1025; box-shadow: 3px 3px 0 #a8d4f0;
-        transition: all .2s;
-      " onmouseover="this.style.boxShadow='5px 5px 0 #a8d4f0';this.style.transform='translate(-2px,-2px)'" onmouseout="this.style.boxShadow='3px 3px 0 #a8d4f0';this.style.transform='none'">
-        ✉️ Send to katelynlyu@163.com
-      </button>
-    </form>
-    <p id="inboxConfirm" style="display:none; margin-top:10px; font-size:13px; font-weight:700; color:var(--green); text-align:center;">
-      ✅ Message ready! Opening your email client...
-    </p>
+  <!-- How I Work -->
+  <div class="section">
+    <div class="section-label">How I Work</div>
+    <ul class="bullet-list">
+      <li>Research-first: study the tech landscape (conferences, benchmarks, papers) before initiating outreach</li>
+      <li>Three-layer filtering: Academic track record → Industry impact → Domain-role fit</li>
+      <li>Structured deliverables: comparative analysis over vague recommendations</li>
+      <li>Tool builder mindset: if a system doesn't exist, I build it</li>
+    </ul>
   </div>
-</section>
+
+  <!-- Actively Looking For -->
+  <div class="section">
+    <div class="section-label">Actively Looking For</div>
+    <ul class="bullet-list">
+      <li>Someone who can design and lead a public embodied AI benchmark / evaluation framework</li>
+      <li>Senior researchers in World Model, video-to-action, and physical simulation</li>
+      <li>Model-efficiency researchers (architecture-level, not infra-level) for large-scale training</li>
+    </ul>
+  </div>
+
+  <!-- Recent Updates -->
+  <div class="section">
+    <div class="section-label">Recent Updates</div>
+    <div class="news-item"><span class="date">Jul 2026</span><span class="text">Launched <strong>Situated Memory</strong> — domain-based memory architecture for personal AI agents. Paper draft in progress.</span></div>
+    <div class="news-item"><span class="date">Jun 2026</span><span class="text">Built <strong>Money Tracker</strong> — SQLite-powered talent & team tracking dashboard for embodied AI recruitment.</span></div>
+    <div class="news-item"><span class="date">May 2026</span><span class="text">Designed <strong>Tech Radar</strong> — automated market signal scanner for startup funding & talent discovery.</span></div>
+    <div class="news-item"><span class="date">2025–2026</span><span class="text">Developed AI-powered <strong>recruitment intelligence tools</strong>: smart notebook, company profiling, CRM automation.</span></div>
+  </div>
+
+  <hr>
+
+  <div class="footer">This card is designed to be both human-readable and AI-agent parseable. Last updated 2026-07-28.</div>
+
+</div>
 
 <script>
+(function() {
+  var trigger = document.getElementById('duck-trigger');
+  var ducky = document.getElementById('ducky');
+  var flying = false;
+  var duckyReady = false;
 
-    (function() {
-      var heroText = document.querySelector('.bio');
-      var ducky = document.getElementById('ducky');
-      var flying = false;
-      var duckyReady = false;
-
-      ducky.addEventListener('load', function() {
-        duckyReady = true;
-        ducky.style.visibility = 'visible';
-      });
-
-      var cssAnims = [
-        'anim-sweep', 'anim-explode', 'anim-bounce',
-        'anim-spinout', 'anim-inflate', 'anim-zoomby', 'anim-melt'
-      ];
-      var jsAnims = ['shatter', 'split'];
-      var allAnims = cssAnims.concat(jsAnims);
-
-      function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
-
-      function resetDucky() {
-        cssAnims.concat(['anim-enter']).forEach(function(c) { ducky.classList.remove(c); });
-        ducky.style.cssText = 'pointer-events:none; visibility:visible;';
-        flying = false;
-      }
-
-      /* Snapshot the model-viewer for fragment effects */
-      function getSnapshot() {
-        try { return ducky.toDataURL('image/png'); } catch(e) { return null; }
-      }
-
-      /* Build fragment divs at the ducky's current viewport position */
-      function makeFragments(imgUrl, rect, clips, offsets) {
-        var frags = [];
-        clips.forEach(function(clip, i) {
-          var el = document.createElement('div');
-          el.className = 'ducky-fragment';
-          el.style.width  = rect.width  + 'px';
-          el.style.height = rect.height + 'px';
-          el.style.left   = rect.left   + 'px';
-          el.style.top    = rect.top    + 'px';
-          el.style.opacity = '1';
-          if (imgUrl) {
-            el.style.backgroundImage = 'url(' + imgUrl + ')';
-            el.style.backgroundSize  = '100% 100%';
-          } else {
-            el.style.backgroundColor = '#f5c518';
-            el.style.borderRadius = '50%';
-          }
-          el.style.clipPath       = clip;
-          el.style.webkitClipPath = clip;
-          document.body.appendChild(el);
-          frags.push({ el: el, off: offsets[i] });
-        });
-        return frags;
-      }
-
-      /* Animate fragments outward, then clean up */
-      function scatter(frags, ms) {
-        frags[0].el.offsetHeight; /* force reflow */
-        frags.forEach(function(f) {
-          f.el.style.transform = 'translate(' + f.off.x + 'px,' + f.off.y + 'px) rotate(' + f.off.r + 'deg) scale(' + f.off.s + ')';
-          f.el.style.opacity = '0';
-        });
-        setTimeout(function() {
-          frags.forEach(function(f) { f.el.remove(); });
-          resetDucky();
-        }, ms || 900);
-      }
-
-      /* Burst small sparks outward (used after inflate-pop) */
-      function sparks(cx, cy, count) {
-        var colors = ['#f5c518','#ff6b35','#ffe066','#fff','#ffa94d'];
-        for (var i = 0; i < count; i++) {
-          var s = document.createElement('div');
-          s.className = 'ducky-spark';
-          s.style.left = cx + 'px';
-          s.style.top  = cy + 'px';
-          s.style.background = colors[i % colors.length];
-          s.style.opacity = '1';
-          var sz = 4 + Math.random() * 10;
-          s.style.width = sz + 'px';
-          s.style.height = sz + 'px';
-          document.body.appendChild(s);
-          var angle = (i / count) * Math.PI * 2 + (Math.random() - .5);
-          var dist  = 80 + Math.random() * 160;
-          (function(el, a, d) {
-            el.offsetHeight;
-            el.style.transform = 'translate(' + (Math.cos(a)*d) + 'px,' + (Math.sin(a)*d) + 'px) scale(.2)';
-            el.style.opacity = '0';
-            setTimeout(function() { el.remove(); }, 700);
-          })(s, angle, dist);
-        }
-      }
-
-      /* SHATTER — enter, shake, then burst into 8 triangular shards */
-      function runShatter() {
-        ducky.classList.add('anim-enter');
-        ducky.addEventListener('animationend', function h() {
-          ducky.removeEventListener('animationend', h);
-          var rect = ducky.getBoundingClientRect();
-          var img  = getSnapshot();
-          ducky.style.opacity = '0';
-
-          var clips = [], offsets = [], n = 8, dist = 220;
-          for (var i = 0; i < n; i++) {
-            var a1 = (i / n) * 360, a2 = ((i + 1) / n) * 360;
-            var toX = function(deg) { return 50 + 50 * Math.cos(deg * Math.PI / 180); };
-            var toY = function(deg) { return 50 + 50 * Math.sin(deg * Math.PI / 180); };
-            clips.push('polygon(50% 50%,' + toX(a1)+'% '+toY(a1)+'%,' + toX(a2)+'% '+toY(a2)+'%)');
-            var mid = ((a1 + a2) / 2) * Math.PI / 180;
-            offsets.push({
-              x: Math.cos(mid) * dist * (.7 + Math.random() * .6),
-              y: Math.sin(mid) * dist * (.7 + Math.random() * .6),
-              r: (Math.random() - .5) * 360,
-              s: .2 + Math.random() * .3
-            });
-          }
-          scatter(makeFragments(img, rect, clips, offsets), 1000);
-        });
-      }
-
-      /* SPLIT — enter, shake, then crack into two halves */
-      function runSplit() {
-        ducky.classList.add('anim-enter');
-        ducky.addEventListener('animationend', function h() {
-          ducky.removeEventListener('animationend', h);
-          var rect = ducky.getBoundingClientRect();
-          var img  = getSnapshot();
-          ducky.style.opacity = '0';
-
-          var clips = ['inset(0 0 50% 0)', 'inset(50% 0 0 0)'];
-          var offsets = [
-            { x: -60 - Math.random()*40, y: -160 - Math.random()*40, r: -20 - Math.random()*20, s: .7 },
-            { x:  60 + Math.random()*40, y:  160 + Math.random()*40, r:  20 + Math.random()*20, s: .7 }
-          ];
-          scatter(makeFragments(img, rect, clips, offsets), 1100);
-        });
-      }
-
-      /* Wire up the inflate-pop spark burst via a timed callback */
-      function runInflate() {
-        ducky.classList.add('anim-inflate');
-        /* Pop happens at ~85% of 2.2s ≈ 1870ms */
-        setTimeout(function() {
-          var r = ducky.getBoundingClientRect();
-          sparks(r.left + r.width / 2, r.top + r.height / 2, 18);
-        }, 1860);
-        ducky.addEventListener('animationend', function h() {
-          ducky.removeEventListener('animationend', h);
-          resetDucky();
-        });
-      }
-
-      heroText.addEventListener('mouseenter', function() {
-        if (flying || !duckyReady) return;
-        flying = true;
-
-        var anim = pick(allAnims);
-
-        if (anim === 'shatter')      return runShatter();
-        if (anim === 'split')        return runSplit();
-        if (anim === 'anim-inflate') return runInflate();
-
-        /* All other CSS-only animations */
-        ducky.classList.add(anim);
-        ducky.addEventListener('animationend', function h() {
-          ducky.removeEventListener('animationend', h);
-          resetDucky();
-        });
-      });
-    })();
-  
-</script>
-
-<script>
-  document.getElementById('inboxForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var name = encodeURIComponent(document.getElementById('inboxName').value);
-    var email = encodeURIComponent(document.getElementById('inboxEmail').value);
-    var msg = encodeURIComponent(document.getElementById('inboxMsg').value);
-    var body = 'From: ' + name + '\\nEmail: ' + email + '\\n\\n' + msg;
-    var mailto = 'mailto:katelynlyu@163.com?subject=' + encodeURIComponent('Message from ' + name + ' via KatelynLyu.com') + '&body=' + body;
-    document.getElementById('inboxConfirm').style.display = 'block';
-    window.location.href = mailto;
+  ducky.addEventListener('load', function() {
+    duckyReady = true;
+    ducky.style.visibility = 'visible';
   });
+
+  var cssAnims = ['anim-sweep','anim-explode','anim-bounce','anim-spinout','anim-inflate','anim-zoomby','anim-melt'];
+  var jsAnims = ['shatter','split'];
+  var allAnims = cssAnims.concat(jsAnims);
+
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  function resetDucky() {
+    cssAnims.concat(['anim-enter']).forEach(function(c) { ducky.classList.remove(c); });
+    ducky.style.cssText = 'pointer-events:none; visibility:visible;';
+    flying = false;
+  }
+  function getSnapshot() {
+    try { return ducky.toDataURL('image/png'); } catch(e) { return null; }
+  }
+  function makeFragments(imgUrl, rect, clips, offsets) {
+    var frags = [];
+    clips.forEach(function(clip, i) {
+      var el = document.createElement('div'); el.className = 'ducky-fragment';
+      el.style.width = rect.width+'px'; el.style.height = rect.height+'px';
+      el.style.left = rect.left+'px'; el.style.top = rect.top+'px'; el.style.opacity = '1';
+      if (imgUrl) { el.style.backgroundImage = 'url('+imgUrl+')'; el.style.backgroundSize = '100% 100%'; }
+      else { el.style.backgroundColor = '#f5c518'; el.style.borderRadius = '50%'; }
+      el.style.clipPath = clip; document.body.appendChild(el);
+      frags.push({el:el,off:offsets[i]});
+    });
+    return frags;
+  }
+  function scatter(frags, ms) {
+    frags[0].el.offsetHeight;
+    frags.forEach(function(f) {
+      f.el.style.transform = 'translate('+f.off.x+'px,'+f.off.y+'px) rotate('+f.off.r+'deg) scale('+f.off.s+')';
+      f.el.style.opacity = '0';
+    });
+    setTimeout(function() { frags.forEach(function(f) { f.el.remove(); }); resetDucky(); }, ms||900);
+  }
+  function sparks(cx, cy, count) {
+    var colors = ['#f5c518','#ff6b35','#ffe066','#fff','#ffa94d'];
+    for (var i=0;i<count;i++) {
+      var s=document.createElement('div'); s.className='ducky-spark';
+      s.style.left=cx+'px'; s.style.top=cy+'px'; s.style.background=colors[i%colors.length]; s.style.opacity='1';
+      var sz=4+Math.random()*10; s.style.width=sz+'px'; s.style.height=sz+'px';
+      document.body.appendChild(s);
+      var angle=(i/count)*Math.PI*2+(Math.random()-.5), dist=80+Math.random()*160;
+      (function(el,a,d){el.offsetHeight;el.style.transform='translate('+(Math.cos(a)*d)+'px,'+(Math.sin(a)*d)+'px) scale(.2)';el.style.opacity='0';setTimeout(function(){el.remove();},700);})(s,angle,dist);
+    }
+  }
+  function runShatter() {
+    ducky.classList.add('anim-enter');
+    ducky.addEventListener('animationend', function h() {
+      ducky.removeEventListener('animationend', h);
+      var rect = ducky.getBoundingClientRect(), img = getSnapshot();
+      ducky.style.opacity = '0';
+      var clips=[],offsets=[],n=8,dist=220;
+      for (var i=0;i<n;i++) {
+        var a1=(i/n)*360,a2=((i+1)/n)*360;
+        var tX=function(d){return 50+50*Math.cos(d*Math.PI/180);},tY=function(d){return 50+50*Math.sin(d*Math.PI/180);};
+        clips.push('polygon(50% 50%,'+tX(a1)+'% '+tY(a1)+'%,'+tX(a2)+'% '+tY(a2)+'%)');
+        var mid=((a1+a2)/2)*Math.PI/180;
+        offsets.push({x:Math.cos(mid)*dist*(.7+Math.random()*.6),y:Math.sin(mid)*dist*(.7+Math.random()*.6),r:(Math.random()-.5)*360,s:.2+Math.random()*.3});
+      }
+      scatter(makeFragments(img,rect,clips,offsets),1000);
+    });
+  }
+  function runSplit() {
+    ducky.classList.add('anim-enter');
+    ducky.addEventListener('animationend', function h() {
+      ducky.removeEventListener('animationend', h);
+      var rect = ducky.getBoundingClientRect(), img = getSnapshot();
+      ducky.style.opacity = '0';
+      var clips=['inset(0 0 50% 0)','inset(50% 0 0 0)'];
+      var offsets=[
+        {x:-60-Math.random()*40,y:-160-Math.random()*40,r:-20-Math.random()*20,s:.7},
+        {x:60+Math.random()*40,y:160+Math.random()*40,r:20+Math.random()*20,s:.7}
+      ];
+      scatter(makeFragments(img,rect,clips,offsets),1100);
+    });
+  }
+  function runInflate() {
+    ducky.classList.add('anim-inflate');
+    setTimeout(function(){ var r=ducky.getBoundingClientRect(); sparks(r.left+r.width/2,r.top+r.height/2,18); },1860);
+    ducky.addEventListener('animationend', function h() { ducky.removeEventListener('animationend',h); resetDucky(); });
+  }
+
+  trigger.addEventListener('mouseenter', function() {
+    if (flying||!duckyReady) return;
+    flying = true;
+    var anim = pick(allAnims);
+    if (anim==='shatter') return runShatter();
+    if (anim==='split') return runSplit();
+    if (anim==='anim-inflate') return runInflate();
+    ducky.classList.add(anim);
+    ducky.addEventListener('animationend', function h() { ducky.removeEventListener('animationend',h); resetDucky(); });
+  });
+})();
 </script>
-
-<section class="section">
-  <h2>📸 Gallery</h2>
-  <div class="photo-gallery">
-    <div class="gallery-item">
-      <div class="gallery-img-wrapper">
-        <img src="assets/photo1.jpg" alt="Photo 1" onerror="this.parentElement.parentElement.style.display='none'">
-      </div>
-      <p class="gallery-caption">Add your caption here</p>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-img-wrapper">
-        <img src="assets/photo2.jpg" alt="Photo 2" onerror="this.parentElement.parentElement.style.display='none'">
-      </div>
-      <p class="gallery-caption">Add your caption here</p>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-img-wrapper">
-        <img src="assets/photo3.jpg" alt="Photo 3" onerror="this.parentElement.parentElement.style.display='none'">
-      </div>
-      <p class="gallery-caption">Add your caption here</p>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">© 2026 Katelyn Lyu</footer>
 
 </body>
 </html>
